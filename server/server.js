@@ -1,10 +1,11 @@
-/*global process __dirname*/
+/*global process __dirname path*/
 
 import express from 'express';
 import bodyParser from 'body-parser';
 import logger from 'morgan';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import path from 'path';
 
 import { DB_URL } from './config/db';
 import films from './routes/films';
@@ -33,6 +34,9 @@ app.use('/api', router);
 app.use('/api/films', films);
 app.use('/api/auth', auth);
 app.use('/api/user', user);
-app.use(express.static(__dirname + '/'));
+app.use(express.static(path.join(__dirname, '/../client/public')));
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/../client/public/index.html'));
+});
 
 app.listen(API_PORT, () => console.log(`Listening on port ${API_PORT}`));
