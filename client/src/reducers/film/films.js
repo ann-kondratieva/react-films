@@ -10,7 +10,7 @@ const films = handleActions(
             return { loading: true };
         },
         [filmActionCreators.filmsSuccess]: (state, action) => {
-            return { items: action.payload };
+            return { items: action.payload.films };
         },
         [filmActionCreators.filmsError]: () => {
             return { error: true };

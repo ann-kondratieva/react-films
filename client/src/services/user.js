@@ -1,12 +1,12 @@
 import { authHeader } from './authHeader';
 
-function getFilms() {
+function getUser() {
     const requestOptions = {
         method: 'GET',
         headers: authHeader()
     };
 
-    return fetch('http://localhost:3001/api/films', requestOptions).then(handleResponse);
+    return fetch('http://localhost:3001/api/user', requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {
@@ -16,8 +16,8 @@ function handleResponse(response) {
     return response.json();
 }
 
-const filmService = {
-    getFilms
+const userService = {
+    getUser
 };
 
-export default filmService;
+export default userService;

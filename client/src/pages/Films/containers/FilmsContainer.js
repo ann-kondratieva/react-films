@@ -6,46 +6,63 @@ import { bindActionCreators } from 'redux';
 import filmActionCreators from '../../../actions/films';
 import filmSelectors from '../../../selectors/films';
 import FilmsList from '../views/FilmsList';
+import userSelectors from '../../../selectors/user';
+import userActionCreators from '../../../actions/user';
+import FilmsAppBar from '../views/AppBar';
 
 class FilmsContainer extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-
-        };
+        this.onLogoutClick = this.onLogoutClick.bind(this);
     }
 
     componentDidMount() {
-        this.props.actions.getFilms();
+        this.props.filmActions.getFilms();
+        this.props.userActions.getUser();
+    }
+
+    onLogoutClick() {
+        localStorage.removeItem('jwtToken');
+        this.props.history.push('/login');
     }
 
     render() {
-        const { films } = this.props;
+        const { films, username } = this.props;
         const props = {
-            films: films
+            username,
+            onLogoutClick: this.onLogoutClick
         };
         return (
-            <FilmsList {...props} />
+            <React.Fragment >
+                <FilmsAppBar {...props} />
+                <FilmsList films={films} />
+            </ React.Fragment >
         );
     }
 };
 
 function mapStateToProps(state) {
+    console.log(state);
     return {
-        films: filmSelectors.getFilms(state)
+        films: filmSelectors.getFilms(state),
+        username: userSelectors.getUserName(state)
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(filmActionCreators, dispatch)
+        filmActions: bindActionCreators(filmActionCreators, dispatch),
+        userActions: bindActionCreators(userActionCreators, dispatch)
     };
 }
 
 FilmsContainer.propTypes = {
-    actions: PropTypes.object,
-    films: PropTypes.object
+    filmActions: PropTypes.object,
+    userActions: PropTypes.object,
+    films: PropTypes.object,
+    username: PropTypes.string,
+    history: PropTypes.object
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(FilmsContainer);

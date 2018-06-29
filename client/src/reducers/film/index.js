@@ -3,8 +3,7 @@ import { combineReducers } from 'redux';
 import films from './films';
 
 const film = combineReducers({
-    films,
-    //form: formReducer
+    films
 });
 
 export default film;

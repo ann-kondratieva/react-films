@@ -8,6 +8,8 @@ import cors from 'cors';
 
 import { DB_URL } from './config/db';
 import films from './routes/films';
+import auth from './routes/auth';
+import user from './routes/user';
 
 const app = express();
 const router = express.Router();
@@ -29,5 +31,7 @@ router.get('/', (req, res) => {
 
 app.use('/api', router);
 app.use('/api/films', films);
+app.use('/api/auth', auth);
+app.use('/api/user', user);
 
 app.listen(API_PORT, () => console.log(`Listening on port ${API_PORT}`));
