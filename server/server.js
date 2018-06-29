@@ -1,4 +1,4 @@
-/*global process */
+/*global process __dirname*/
 
 import express from 'express';
 import bodyParser from 'body-parser';
@@ -33,5 +33,6 @@ app.use('/api', router);
 app.use('/api/films', films);
 app.use('/api/auth', auth);
 app.use('/api/user', user);
+app.use(express.static(__dirname + '/'));
 
 app.listen(API_PORT, () => console.log(`Listening on port ${API_PORT}`));
