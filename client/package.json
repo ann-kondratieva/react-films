@@ -25,7 +25,7 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "npm install && npm start",
+    "start": "npm install && npm run build",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
