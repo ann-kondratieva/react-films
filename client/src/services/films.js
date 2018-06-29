@@ -6,7 +6,7 @@ function getFilms() {
         headers: authHeader()
     };
 
-    return fetch('http://localhost:3001/api/films', requestOptions).then(handleResponse);
+    return fetch('/api/films', requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {

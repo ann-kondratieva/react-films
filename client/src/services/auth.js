@@ -5,7 +5,7 @@ function login(email, password) {
         body: JSON.stringify({ email, password })
     };
 
-    return fetch('http://localhost:3001/api/auth/login', requestOptions).then(handleResponse);
+    return fetch('/api/auth/login', requestOptions).then(handleResponse);
 }
 
 function register(username, email, password) {
@@ -15,7 +15,7 @@ function register(username, email, password) {
         body: JSON.stringify({ username, email, password })
     };
 
-    return fetch('http://localhost:3001/api/auth/register', requestOptions).then(handleResponse);
+    return fetch('/api/auth/register', requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {

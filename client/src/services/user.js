@@ -6,7 +6,7 @@ function getUser() {
         headers: authHeader()
     };
 
-    return fetch('http://localhost:3001/api/user', requestOptions).then(handleResponse);
+    return fetch('/api/user', requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {
