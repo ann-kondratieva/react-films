@@ -8,9 +8,9 @@ import cors from 'cors';
 import path from 'path';
 
 import { DB_URL } from './config/db';
-import films from './routes/films';
-import auth from './routes/auth';
-import user from './routes/user';
+import films from './modules/Films/routes/films';
+import auth from './modules/Auth/routes/auth';
+import user from './modules/Auth/routes/user';
 
 const app = express();
 const router = express.Router();
@@ -31,9 +31,10 @@ router.get('/', (req, res) => {
 });
 
 app.use('/api', router);
-app.use('/api/films', films);
-app.use('/api/auth', auth);
-app.use('/api/user', user);
+router.use('/films', films);
+router.use('/auth', auth);
+router.use('/user', user);
+
 app.use(express.static(path.join(__dirname, '/../client/build')));
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname + '/../client/build/index.html'));

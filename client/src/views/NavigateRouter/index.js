@@ -4,10 +4,10 @@ import React from 'react';
 import { Route, Router, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 
-import FilmsContainer from '../../pages/Films';
-import LoginContainer from '../../pages/Login';
 import PrivateRoute from '../../components/PrivateRoute';
-import RegisterContainer from '../../pages/Register';
+import FilmsContainer from '../../modules/Films/pages/Films/containers/FilmsContainer';
+import LoginContainer from '../../modules/Auth/pages/Login/containers/LoginContainer';
+import RegisterContainer from '../../modules/Auth/pages/Register/containers/RegisterContainer';
 
 const history = createBrowserHistory();
 

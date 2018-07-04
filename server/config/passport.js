@@ -1,6 +1,6 @@
 import passportJwt from 'passport-jwt';
 
-import User from '../model/user';
+import User from '../modules/Auth/model/user';
 import { SECRET } from './settings';
 
 const JwtStrategy = passportJwt.Strategy;
@@ -11,7 +11,7 @@ export default function (passport) {
     opts.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('jwt');
     opts.secretOrKey = SECRET;
     passport.use(new JwtStrategy(opts, function (jwt_payload, done) {
-        User.findOne({ id: jwt_payload.id }, function (err, user) {
+        User.findOne({ _id: jwt_payload._id }, function (err, user) {
             if (err) {
                 return done(err, false);
             }

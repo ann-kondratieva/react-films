@@ -1,5 +1,4 @@
-export function authHeader() {
-    let token = localStorage.getItem('jwtToken');
+export default function authHeader(token) {
     if (token) {
         return { 'authorization': 'jwt ' + token };
     } else {

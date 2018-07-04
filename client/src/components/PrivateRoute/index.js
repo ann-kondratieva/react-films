@@ -1,3 +1,3 @@
-import PrivateRoute from './PrivateRoute';
+import PrivateRouteContainer from './containers/PrivateRouteContainer';
 
-export default PrivateRoute;
+export default PrivateRouteContainer;
