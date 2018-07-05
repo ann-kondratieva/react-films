@@ -1,15 +1,19 @@
 import Film from '../model/film';
 
-const getFilms = (req, res, next) => {
+const getFilms = async (req, res) => {
     const { headers: { authorization } } = req;
     const token = authorization;
-    if (token) {
-        Film.find({}).exec(function (err, films) {
-            if (err) return next(err);
+    let films;
+    try {
+        if (token) {
+            films = await Film.find({});
             res.json({ films });
-        });
-    } else {
-        return res.status(403).send({ success: false, message: 'Unauthorized.' });
+        } else {
+            res.statusMessage = 'Unauthorized.';
+            return res.status(403).send();
+        }
+    } catch (error) {
+        throw error;
     }
 };
 
