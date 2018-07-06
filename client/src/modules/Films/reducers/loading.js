@@ -1,15 +1,15 @@
 import { handleActions } from 'redux-actions';
 
-import filmActionCreators from '../actions/films';
+import filmsActionCreators from '../pages/Films/actions';
 
 let initialState = false;
 
 const loading = handleActions(
     {
-        [filmActionCreators.getFilmsRequest]: () => {
+        [filmsActionCreators.getFilmsRequest]: () => {
             return true;
         },
-        [filmActionCreators.getFilmsSuccess]: () => {
+        [filmsActionCreators.getFilmsSuccess]: () => {
             return false;
         }
     },

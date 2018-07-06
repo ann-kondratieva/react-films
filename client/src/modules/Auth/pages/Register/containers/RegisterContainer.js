@@ -6,10 +6,11 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import RegisterForm from '../views/RegisterForm';
-import authActionCreators from '../../../actions/auth';
+import registerActionCreators from '../actions';
 import { REGISTER_FORM } from '../../../constants/form';
-import { validate } from '../services/validate';
-import userSelectors from '../../../selectors/user';
+import createValidator from '../../../../../services/createValidator';
+import { registerSchema } from '../../../constants/joiSchemas';
+import userSelectors from '../../../selectors';
 import ErrorMessage from '../../../views/ErrorMessage';
 
 class RegisterContainer extends Component {
@@ -17,12 +18,6 @@ class RegisterContainer extends Component {
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    UNSAFE_componentWillReceiveProps({ authData: { success } }) {
-        if (success) {
-            this.props.history.push('/');
-        }
     }
 
     componentDidMount() {
@@ -46,7 +41,7 @@ class RegisterContainer extends Component {
         const props = {
             onSubmit: this.handleSubmit,
             form: REGISTER_FORM,
-            validate
+            validate: createValidator(registerSchema)
         };
         return (
             <React.Fragment>
@@ -65,7 +60,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(authActionCreators, dispatch)
+        actions: bindActionCreators(registerActionCreators, dispatch)
     };
 }
 

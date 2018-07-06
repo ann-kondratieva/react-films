@@ -1,27 +1,25 @@
 /* global process */
 
 import React from 'react';
-import { Route, Router, Switch } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
+/* import { Route } from 'react-router'; */
+import { Switch, Route } from 'react-router-dom';
+import { ConnectedRouter } from 'react-router-redux';
 
 import PrivateRoute from '../../components/PrivateRoute';
 import FilmsContainer from '../../modules/Films/pages/Films/containers/FilmsContainer';
 import LoginContainer from '../../modules/Auth/pages/Login/containers/LoginContainer';
 import RegisterContainer from '../../modules/Auth/pages/Register/containers/RegisterContainer';
-
-const history = createBrowserHistory();
+import history from '../../services/history';
 
 const NavigateRouter = () => {
     return (
-        <Router history={history}>
-            <React.Fragment>
-                <Switch>
-                    <PrivateRoute exact path={`${process.env.PUBLIC_URL}/`} component={FilmsContainer} />
-                    <Route exact path={`${process.env.PUBLIC_URL}/login`} component={LoginContainer} />
-                    <Route exact path={`${process.env.PUBLIC_URL}/register`} component={RegisterContainer} />
-                </Switch>
-            </React.Fragment>
-        </Router>
+        <ConnectedRouter history={history}>
+            <Switch>
+                <PrivateRoute exact path={`${process.env.PUBLIC_URL}/`} component={FilmsContainer} />
+                <Route exact path={`${process.env.PUBLIC_URL}/login`} component={LoginContainer} />
+                <Route exact path={`${process.env.PUBLIC_URL}/register`} component={RegisterContainer} />
+            </Switch>
+        </ConnectedRouter>
     );
 };
 

@@ -1,12 +1,12 @@
 import { handleActions } from 'redux-actions';
 
-import filmActionCreators from '../actions/films';
+import filmsActionCreators from '../pages/Films/actions';
 
 let initialState = false;
 
 const error = handleActions(
     {
-        [filmActionCreators.getFilmsError]: (state, action) => {
+        [filmsActionCreators.getFilmsError]: (state, action) => {
             return action.payload;
         }
     },

@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import filmActionCreators from '../../../actions/films';
+import filmsActionCreators from '../actions';
 import filmSelectors from '../../../selectors/films';
 import FilmsList from '../views/FilmsList';
-import userSelectors from '../../../../Auth/selectors/user';
-import userActionCreators from '../../../../Auth/actions/user';
-import authActionCreators from '../../../../Auth/actions/auth';
+import userSelectors from '../../../../Auth/selectors/index.js';
+import globalActionCreators from '../../../../../actions';
 import FilmsAppBar from '../views/AppBar';
 /* import { SEARCH_FORM } from '../../../constants/form';
 import SearchForm from '../views/SearchForm'; */
@@ -21,17 +20,14 @@ class FilmsContainer extends Component {
     }
 
     componentDidMount() {
-        const { filmActions, userActions, token } = this.props;
+        const { filmActions, token } = this.props;
         const { getFilmsRequest } = filmActions;
-        const { getUserRequest } = userActions;
         getFilmsRequest(token);
-        getUserRequest(token);
     }
 
     onLogoutClick() {
-        const { authActions: { logout }, history } = this.props;
+        const { actions: { logout } } = this.props;
         logout();
-        history.push('/login');
     }
 
     onSearchSubmit({ search }) {
@@ -68,16 +64,14 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        filmActions: bindActionCreators(filmActionCreators, dispatch),
-        userActions: bindActionCreators(userActionCreators, dispatch),
-        authActions: bindActionCreators(authActionCreators, dispatch),
+        filmActions: bindActionCreators(filmsActionCreators, dispatch),
+        actions: bindActionCreators(globalActionCreators, dispatch),
     };
 }
 
 FilmsContainer.propTypes = {
     filmActions: PropTypes.object.isRequired,
-    userActions: PropTypes.object.isRequired,
-    authActions: PropTypes.object.isRequired,
+    actions: PropTypes.object.isRequired,
     token: PropTypes.string.isRequired,
     filmsState: PropTypes.object.isRequired,
     username: PropTypes.string.isRequired,

@@ -5,7 +5,8 @@ const getUser = (req, res) => {
         user.password = null;
         res.json(user);
     } else {
-        return res.status(403).send({ success: false, msg: 'Unauthorized.' });
+        res.statusMessage = 'Unauthorized.';
+        return res.status(403).send();
     }
 };
 

@@ -1,13 +1,13 @@
 import { handleActions } from 'redux-actions';
 
-import filmActionCreators from '../actions/films';
+import filmsActionCreators from '../pages/Films/actions';
 
 let initialState = [];
 
 const items = handleActions(
     {
-        [filmActionCreators.getFilmsSuccess]: (state, action) => {
-            return action.payload.films;
+        [filmsActionCreators.getFilmsSuccess]: (state, action) => {
+            return action.response.films;
         }
     },
     initialState

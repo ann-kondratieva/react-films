@@ -3,7 +3,6 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import NavigateRouter from '../NavigateRouter';
-
 import { store } from '../../store';
 import { persistor } from '../../store';
 

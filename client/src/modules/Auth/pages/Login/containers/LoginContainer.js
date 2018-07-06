@@ -6,11 +6,13 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import LoginForm from '../views/LoginForm';
-import authActionCreators from '../../../actions/auth';
+import loginActionCreators from '../actions';
+import authActionCreators from '../../../actions';
 import { LOGIN_FORM } from '../../../constants/form';
-import { validate } from '../services/validate';
+import createValidator from '../../../../../services/createValidator';
+import { loginSchema } from '../../../constants/joiSchemas';
 import ErrorMessage from '../../../views/ErrorMessage';
-import userSelectors from '../../../selectors/user';
+import userSelectors from '../../../selectors';
 
 class LoginContainer extends Component {
 
@@ -19,19 +21,13 @@ class LoginContainer extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    UNSAFE_componentWillReceiveProps({ authData: { success } }) {
-        if (success) {
-            this.props.history.push('/');
-        }
-    }
-
     componentDidMount() {
-        const { clearAuthData } = this.props.actions;
+        const { clearAuthData } = this.props.authActions;
         clearAuthData();
     }
 
     handleSubmit({ email, password }) {
-        const { loginRequest } = this.props.actions;
+        const { loginRequest } = this.props.loginActions;
         const userData = {
             email,
             password
@@ -44,7 +40,7 @@ class LoginContainer extends Component {
         const props = {
             onSubmit: this.handleSubmit,
             form: LOGIN_FORM,
-            validate
+            validate: createValidator(loginSchema)
         };
         return (
             <React.Fragment>
@@ -63,14 +59,16 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(authActionCreators, dispatch)
+        loginActions: bindActionCreators(loginActionCreators, dispatch),
+        authActions: bindActionCreators(authActionCreators, dispatch),
     };
 }
 
 
 LoginContainer.propTypes = {
     history: PropTypes.object.isRequired,
-    actions: PropTypes.object.isRequired,
+    loginActions: PropTypes.object.isRequired,
+    authActions: PropTypes.object.isRequired,
     authData: PropTypes.object.isRequired
 };
 

@@ -1,18 +1,20 @@
 import { handleActions } from 'redux-actions';
 
-import authActionCreators from '../actions/auth';
+import loginActionCreators from '../pages/Login/actions';
+import registerActionCreators from '../pages/Login/actions';
+import globalActionCreators from '../../../actions';
 
 let initialState = false;
 
 const success = handleActions(
     {
-        [authActionCreators.loginSuccess]: () => {
+        [loginActionCreators.loginSuccess]: () => {
             return true;
         },
-        [authActionCreators.registerSuccess]: () => {
+        [registerActionCreators.registerSuccess]: () => {
             return true;
         },
-        [authActionCreators.logout]: () => {
+        [globalActionCreators.logout]: () => {
             return initialState;
         }
     },
