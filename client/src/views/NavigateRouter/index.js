@@ -5,7 +5,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
 
-import PrivateRoute from '../../components/PrivateRoute';
+import PrivateRoute from '../../modules/Auth/components/PrivateRoute';
 import FilmsContainer from '../../modules/Films/pages/Films/containers/FilmsContainer';
 import LoginContainer from '../../modules/Auth/pages/Login/containers/LoginContainer';
 import RegisterContainer from '../../modules/Auth/pages/Register/containers/RegisterContainer';

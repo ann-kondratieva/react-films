@@ -4,7 +4,7 @@ import storage from 'redux-persist/lib/storage';
 import { reducer as formReducer } from 'redux-form';
 import { routerReducer } from 'react-router-redux';
 
-import films from '../modules/Films/reducers';
+import films from '../modules/Films/pages/Films/reducers';
 import auth from '../modules/Auth/reducers';
 
 const rootPersistConfig = {

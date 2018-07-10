@@ -7,11 +7,9 @@ import { bindActionCreators } from 'redux';
 
 import RegisterForm from '../views/RegisterForm';
 import registerActionCreators from '../actions';
-import { REGISTER_FORM } from '../../../constants/form';
+import { REGISTER_FORM } from '../constants';
 import createValidator from '../../../../../services/createValidator';
-import { registerSchema } from '../../../constants/joiSchemas';
-import userSelectors from '../../../selectors';
-import ErrorMessage from '../../../views/ErrorMessage';
+import { registerSchema } from '../constants';
 
 class RegisterContainer extends Component {
 
@@ -20,14 +18,8 @@ class RegisterContainer extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    componentDidMount() {
-        const { clearAuthData } = this.props.actions;
-        clearAuthData();
-    }
-
-
     handleSubmit({ username, email, password }) {
-        const { registerRequest } = this.props.actions;
+        const { registerRequest } = this.props.registerActions;
         const userData = {
             username,
             email,
@@ -37,7 +29,6 @@ class RegisterContainer extends Component {
     }
 
     render() {
-        const { authData: { loading, error, message } } = this.props;
         const props = {
             onSubmit: this.handleSubmit,
             form: REGISTER_FORM,
@@ -45,30 +36,23 @@ class RegisterContainer extends Component {
         };
         return (
             <React.Fragment>
-                <ErrorMessage message={message} isShown={error} />
-                <RegisterForm {...props} loading={loading} />
+                <RegisterForm {...props} />
             </React.Fragment>
         );
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        authData: userSelectors.getAuthData(state)
-    };
-}
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(registerActionCreators, dispatch)
+        registerActions: bindActionCreators(registerActionCreators, dispatch),
     };
 }
 
 
 RegisterContainer.propTypes = {
     history: PropTypes.object.isRequired,
-    actions: PropTypes.object.isRequired,
-    authData: PropTypes.object.isRequired
+    registerActions: PropTypes.object.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(RegisterContainer);
+export default connect(null, mapDispatchToProps)(RegisterContainer);

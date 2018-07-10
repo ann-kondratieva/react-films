@@ -1,11 +1,7 @@
-import loginRequest from './loginRequest';
-import registerRequest from './registerRequest';
-import getUserRequest from './getUserRequest';
-import getFilmsRequest from './getFilmsRequest';
+import auth from './auth';
+import films from './films';
 
 export default {
-    loginRequest,
-    registerRequest,
-    getUserRequest,
-    getFilmsRequest
+    ...auth,
+    ...films
 };

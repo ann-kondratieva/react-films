@@ -1,10 +1,10 @@
 import { handleActions } from 'redux-actions';
 
 import loginActionCreators from '../pages/Login/actions';
-import registerActionCreators from '../pages/Login/actions';
+import registerActionCreators from '../pages/Register/actions';
 import globalActionCreators from '../../../actions';
 
-let initialState = '';
+let initialState = null;
 
 const token = handleActions(
     {

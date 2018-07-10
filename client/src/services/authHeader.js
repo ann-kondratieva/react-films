@@ -1,7 +1,7 @@
 export default function authHeader(token) {
     if (token) {
-        return { 'authorization': 'jwt ' + token };
+        return 'jwt ' + token;
     } else {
-        return {};
+        return null;
     }
 }

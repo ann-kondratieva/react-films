@@ -12,13 +12,23 @@ import { styles } from './styles';
 import RenderTextField from '../../../../../../views/RenderTextField';
 import Loading from '../../../../../../views/Loading';
 
-const RegisterForm = ({ handleSubmit, pristine, submitting, classes, loading }) => {
+const RegisterForm = ({ handleSubmit, pristine, submitting, classes, error }) => {
     return (
         <Grid
             container
             alignItems="center"
             justify="center">
             <form className={classes.container} onSubmit={handleSubmit}>
+                <Grid item xs={12}  >
+                    <Grid
+                        container
+                        alignItems="center"
+                        justify="center">
+                        <Typography className={classes.error}>
+                            {error && error}
+                        </Typography >
+                    </Grid>
+                </Grid>
                 <Grid item xs={12}  >
                     <Field
                         className={classes.textField}
@@ -56,7 +66,7 @@ const RegisterForm = ({ handleSubmit, pristine, submitting, classes, loading }) 
                         container
                         alignItems="center"
                         justify="center">
-                        {loading ?
+                        {submitting ?
                             <Loading /> :
                             <Button className={classes.submitButton} type="submit"
                                 variant="contained" color="primary" disabled={pristine || submitting}>
@@ -84,7 +94,7 @@ RegisterForm.propTypes = {
     pristine: PropTypes.bool.isRequired,
     submitting: PropTypes.bool.isRequired,
     classes: PropTypes.object.isRequired,
-    loading: PropTypes.bool.isRequired,
+    error: PropTypes.string
 };
 
 export default reduxForm()(withStyles(styles)(RegisterForm));

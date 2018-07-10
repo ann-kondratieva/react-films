@@ -9,13 +9,13 @@ import RenderTextField from '../../../../../../views/RenderTextField';
 
 const SearchForm = ({ handleSubmit, classes }) => {
     return (
-        <form className={classes.container} onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <Field
                 className={classes.textField}
                 name="search"
                 component={RenderTextField}
                 label="Search"
-                margin="normal"
+                margin="dense"
                 type="text"
             />
         </form>

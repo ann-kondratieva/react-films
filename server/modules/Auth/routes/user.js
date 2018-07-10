@@ -1,14 +1,10 @@
 import express from 'express';
-import passport from 'passport';
 
-import getUserFromJWT from '../../../config/passport';
-import authenticate from '../controllers/authenticate';
+import { jwtAuthenticate } from '../middlewares/authenticate';
 import getUser from '../controllers/getUser';
-
-getUserFromJWT(passport);
 
 const router = express.Router();
 
-router.get('/', authenticate, getUser);
+router.get('/', jwtAuthenticate, getUser);
 
 export default router; 

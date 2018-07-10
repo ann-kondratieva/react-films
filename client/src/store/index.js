@@ -12,8 +12,7 @@ const routeMiddleware = routerMiddleware(history);
 
 export const store = createStore(
     persistedReducer,
-    applyMiddleware(sagaMiddleware),
-    applyMiddleware(routeMiddleware)
+    applyMiddleware(sagaMiddleware, routeMiddleware),
 );
 
 sagaMiddleware.run(rootSaga);

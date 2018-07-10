@@ -3,9 +3,9 @@ import { createSelector } from 'reselect';
 import userSelectors from '../modules/Auth/selectors';
 
 const isAuth = createSelector(
-    [userSelectors.getToken, userSelectors.getUserData],
-    (token, userdata) => {
-        return (token !== null && userdata !== null);
+    [userSelectors.getToken, userSelectors.getUser],
+    (token, user) => {
+        return (token !== null && user !== null);
     }
 );
 

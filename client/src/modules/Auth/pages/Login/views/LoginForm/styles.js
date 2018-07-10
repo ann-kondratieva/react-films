@@ -10,5 +10,8 @@ export const styles = theme => ({
     submitButton: {
         marginTop: 15,
         marginBottom: 30
+    },
+    error: {
+        color: 'red'
     }
 });

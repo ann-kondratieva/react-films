@@ -9,8 +9,7 @@ import FilmsList from '../views/FilmsList';
 import userSelectors from '../../../../Auth/selectors/index.js';
 import globalActionCreators from '../../../../../actions';
 import FilmsAppBar from '../views/AppBar';
-/* import { SEARCH_FORM } from '../../../constants/form';
-import SearchForm from '../views/SearchForm'; */
+import ServicesContainer from './ServicesContainer';
 
 class FilmsContainer extends Component {
 
@@ -30,24 +29,16 @@ class FilmsContainer extends Component {
         logout();
     }
 
-    onSearchSubmit({ search }) {
-        console.log(search);
-    }
-
     render() {
-        const { filmsState: { loading, items }, username } = this.props;
+        const { filmsState: { loading, items }, user: { username } } = this.props;
         const appBarProps = {
             username,
             onLogoutClick: this.onLogoutClick
         };
-        /*  const searchProps = {
-            onSubmit: this.onSearchSubmit,
-            form: SEARCH_FORM
-        }; */
         return (
             <React.Fragment >
                 <FilmsAppBar {...appBarProps} />
-                {/* <SearchForm {...searchProps} /> */}
+                <ServicesContainer />
                 <FilmsList loading={loading} items={items} />
             </ React.Fragment >
         );
@@ -57,7 +48,7 @@ class FilmsContainer extends Component {
 function mapStateToProps(state) {
     return {
         filmsState: filmSelectors.getFilmsState(state),
-        username: userSelectors.getUsername(state),
+        user: userSelectors.getUser(state),
         token: userSelectors.getToken(state)
     };
 }
@@ -74,7 +65,7 @@ FilmsContainer.propTypes = {
     actions: PropTypes.object.isRequired,
     token: PropTypes.string.isRequired,
     filmsState: PropTypes.object.isRequired,
-    username: PropTypes.string.isRequired,
+    user: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired
 };
 

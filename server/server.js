@@ -6,11 +6,13 @@ import logger from 'morgan';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import path from 'path';
+import passport from 'passport';
 
 import { DB_URL } from './config/db';
 import films from './modules/Films/routes/films';
 import auth from './modules/Auth/routes/auth';
-import user from './modules/Auth/routes/user';
+import { authLocalStrategy } from './modules/Auth/config/passport';
+import { authJwtStrategy } from './modules/Auth/config/passport';
 
 const app = express();
 const router = express.Router();
@@ -21,6 +23,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(logger('dev'));
 app.use(cors());
+
+passport.use(authLocalStrategy);
+passport.use(authJwtStrategy);
 
 mongoose.connect(DB_URL);
 var db = mongoose.connection;
@@ -33,7 +38,6 @@ router.get('/', (req, res) => {
 app.use('/api', router);
 router.use('/films', films);
 router.use('/auth', auth);
-router.use('/user', user);
 
 app.use(express.static(path.join(__dirname, '/../client/build')));
 app.get('*', (req, res) => {
