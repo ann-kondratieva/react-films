@@ -9,6 +9,14 @@ import globalActionCreators from '../../../../../actions';
 
 class PrivateRouteContainer extends Component {
 
+    componentDidMount() {
+        const { actions, isAuth } = this.props;
+        const { getUserRequest } = actions;
+        if (isAuth) {
+            getUserRequest();
+        }
+    }
+
     render() {
         const { component: Component, location, isAuth, ...rest } = this.props;
         return (

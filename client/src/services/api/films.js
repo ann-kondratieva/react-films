@@ -1,9 +1,10 @@
 export default {
-    getFilmsRequest: () => {
+    getFilmsRequest: (params) => {
         return {
             url: '/api/films',
             method: 'get',
-            headers: {}
+            headers: {},
+            params
         };
     }
 };

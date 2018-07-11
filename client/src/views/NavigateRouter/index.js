@@ -1,7 +1,6 @@
 /* global process */
 
 import React from 'react';
-/* import { Route } from 'react-router'; */
 import { Switch, Route } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
 

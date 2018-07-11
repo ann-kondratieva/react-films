@@ -12,17 +12,13 @@ const LocalStrategy = passportLocal.Strategy;
 export const authJwtStrategy = new JwtStrategy({
     jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('jwt'),
     secretOrKey: SECRET
-}, function (jwt_payload, done) {
-    User.findOne({ _id: jwt_payload._id }, function (err, user) {
-        if (err) {
-            return done(err, false);
-        }
-        if (user) {
-            done(null, user);
-        } else {
-            done(null, false);
-        }
-    });
+}, async function (jwt_payload, done) {
+    const user = await User.findOne({ _id: jwt_payload._id });
+    if (user) {
+        done(null, user);
+    } else {
+        done(null, false);
+    }
 });
 
 export const authLocalStrategy = new LocalStrategy({

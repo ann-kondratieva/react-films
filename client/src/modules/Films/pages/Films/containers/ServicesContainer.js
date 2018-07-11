@@ -1,34 +1,33 @@
 import React, { Component } from 'react';
-/* import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux'; */
+import { bindActionCreators } from 'redux';
 
 import { SEARCH_FORM } from '../constants';
 import { SELECT_FORM } from '../constants';
 import ServicesForm from '../views/ServicesForm';
+import filmsActionCreators from '../actions';
 
 class ServicesContainer extends Component {
 
     constructor(props) {
         super(props);
-        this.onSearchSubmit = this.onSearchSubmit.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
-    onSearchSubmit({ search }) {
-        console.log(search);
-    }
-
-    onSelectChange(event) {
-        console.log(event.target.value);
+    onSubmit() {
+        const { filmActions: { clearFilms, setHasMore } } = this.props;
+        setHasMore(true);
+        clearFilms();
     }
 
     render() {
         const searchProps = {
-            onSubmit: this.onSearchSubmit,
+            onSubmit: this.onSubmit,
             form: SEARCH_FORM
         };
         const selectProps = {
-            handleChange: this.onSelectChange,
+            handleChange: this.onSubmit,
             form: SELECT_FORM
         };
         return (
@@ -37,24 +36,14 @@ class ServicesContainer extends Component {
     }
 };
 
-/* function mapStateToProps(state) {
+function mapDispatchToProps(dispatch) {
     return {
-        filmsState: filmSelectors.getFilmsState(state),
-        username: userSelectors.getUsername(state),
-        token: userSelectors.getToken(state)
+        filmActions: bindActionCreators(filmsActionCreators, dispatch)
     };
 }
 
-function mapDispatchToProps(dispatch) {
-    return {
-        filmActions: bindActionCreators(filmsActionCreators, dispatch),
-        actions: bindActionCreators(globalActionCreators, dispatch),
-    };
-} */
-
 ServicesContainer.propTypes = {
-    //actions: PropTypes.object.isRequired,
-    //history: PropTypes.object.isRequired
+    filmActions: PropTypes.object.isRequired
 };
 
-export default /* connect(mapStateToProps, mapDispatchToProps) */(ServicesContainer);
+export default connect(null, mapDispatchToProps)(ServicesContainer);

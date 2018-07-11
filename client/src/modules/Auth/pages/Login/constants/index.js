@@ -7,4 +7,3 @@ export const loginSchema = Joi.object().keys({
 
 export const LOGIN_FORM = 'LOGIN_FORM';
 
-

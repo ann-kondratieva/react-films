@@ -11,7 +11,6 @@ const RenderSearchField = ({
 }) => {
     return (
         < TextField
-            type="search"
             error={touched && error}
             placeholder={label}
             {...input}

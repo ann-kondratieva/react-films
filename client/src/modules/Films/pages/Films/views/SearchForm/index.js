@@ -16,7 +16,7 @@ const SearchForm = ({ handleSubmit, classes }) => {
                 component={RenderTextField}
                 label="Search"
                 margin="dense"
-                type="text"
+                type="search"
             />
         </form>
     );

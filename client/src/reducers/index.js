@@ -15,8 +15,7 @@ const rootPersistConfig = {
 
 const authPersistConfig = {
     key: 'auth',
-    storage: storage,
-    blacklist: ['message']
+    storage: storage
 };
 
 const rootReducer = combineReducers({

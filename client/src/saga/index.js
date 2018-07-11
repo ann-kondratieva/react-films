@@ -25,7 +25,7 @@ function* watchRequest(action) {
         const response = yield call(makeRequest, requestProperties);
         yield put({
             type: action.type.replace('_REQUEST', '_SUCCESS'),
-            response: response.data
+            response: response ? response.data : {}
         });
     } catch (error) {
         if (error.response.status === 401) {

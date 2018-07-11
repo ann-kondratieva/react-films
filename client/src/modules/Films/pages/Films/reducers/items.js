@@ -7,7 +7,15 @@ let initialState = [];
 const items = handleActions(
     {
         [filmsActionCreators.getFilmsSuccess]: (state, action) => {
-            return action.response.films;
+            if (state !== []) {
+                let resultState = state;
+                resultState.push(...action.response.films);
+                return resultState;
+            } else return action.response.films;
+        },
+        [filmsActionCreators.clearFilms]: () => {
+            console.log('clear');
+            return [];
         }
     },
     initialState
