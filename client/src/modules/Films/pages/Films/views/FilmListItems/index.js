@@ -6,17 +6,27 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import styles from './styles';
+import placeholder from './output.svg';
+import ImageLoader from 'react-load-image';
+import Preloader from '../Preloader';
 
 const FilmsListItems = ({ items, classes, onClick }) => {
     return (
         <React.Fragment>
-            {items.map(({ title, description, image, _id }) =>
-                <ListItem onClick={() => onClick(_id)} button={true} key={_id} id={_id}>
+            {items.map(({ title, description, image, _id }) => {
+                return (<ListItem onClick={() => onClick(_id)} button={true} key={_id} id={_id}>
                     <ListItemIcon>
-                        <img src={image} alt={title} className={classes.image} />
+                        <ImageLoader
+                            src={image}
+                            className={classes.image} >
+                            <img className={classes.image} />
+                            <div>Error!</div>
+                            <Preloader image={placeholder} />
+                        </ImageLoader>
                     </ListItemIcon>
                     <ListItemText primary={title} secondary={description} />
-                </ListItem>)}
+                </ListItem>);
+            })}
         </React.Fragment>
     );
 };
@@ -28,3 +38,8 @@ FilmsListItems.propTypes = {
 };
 
 export default withStyles(styles)(FilmsListItems);
+
+{/* <img src={placeholder} alt={title} className={classes.image}
+                            onError={() => { console.log('error'); }} />
+                              <ListItemIcon>
+ */}
