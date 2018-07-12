@@ -5,25 +5,13 @@ import InfiniteScroll from 'react-infinite-scroller';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import styles from './styles';
 
 import Loading from '../../../../../../views/Loading';
 import { Typography } from '@material-ui/core';
+import FilmsListItems from '../FilmListItems';
 
-const FilmsList = ({ items, classes, loadMore, hasMore }) => {
-
-    items = items.map(({ title, description, image, _id }) =>
-        <ListItem button key={_id}>
-            <ListItemIcon>
-                <img src={image} alt={title} className={classes.image} />
-            </ListItemIcon>
-            <ListItemText primary={title} secondary={description} />
-        </ListItem>
-    );
-
+const FilmsList = ({ items, classes, loadMore, hasMore, onClick }) => {
     return (
         <Grid className={classes.container}
             container
@@ -40,9 +28,10 @@ const FilmsList = ({ items, classes, loadMore, hasMore }) => {
                     justify="center">
                     <Loading />
                 </Grid>}
+
             >
-                <List className={classes.list} key="list">
-                    {items}
+                <List className={classes.list} >
+                    <FilmsListItems items={items} onClick={onClick} />
                 </List>
                 {!hasMore && items.length === 0 && <Grid className={classes.container}
                     container
@@ -60,6 +49,7 @@ FilmsList.propTypes = {
     items: PropTypes.array.isRequired,
     loadMore: PropTypes.func.isRequired,
     hasMore: PropTypes.bool.isRequired,
+    onClick: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(FilmsList);

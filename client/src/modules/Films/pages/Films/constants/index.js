@@ -1,2 +1,2 @@
-export const SEARCH_FORM = 'SEARCH_FORM';
-export const SELECT_FORM = 'SELECT_FORM';
+export const SERVICES_FORM = 'SERVICES_FORM';
+export const FILMS_LIMIT = 5;

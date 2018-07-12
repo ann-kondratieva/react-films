@@ -1,3 +1,3 @@
-import FilmsContainer from './containers/FilmsContainer';
+import Films from './views/Films';
 
-export default FilmsContainer;
+export default Films;

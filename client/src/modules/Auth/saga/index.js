@@ -1,7 +1,7 @@
 import { takeEvery, all, put } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 
-import globalActionCreators from '../../../actions';
+import authActionCreators from '../actions';
 import loginSaga from '../pages/Login/saga';
 import registerSaga from '../pages/Register/saga';
 
@@ -13,7 +13,7 @@ function* authSaga() {
     yield all([
         loginSaga(),
         registerSaga(),
-        takeEvery(globalActionCreators.logout, redirectToLogin),
+        takeEvery(authActionCreators.logout, redirectToLogin),
     ]);
 }
 

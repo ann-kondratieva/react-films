@@ -3,6 +3,7 @@ import _ from 'lodash';
 import { stopSubmit } from 'redux-form';
 
 import authSaga from '../modules/Auth/saga';
+import filmsSaga from '../modules/Films/saga';
 import api from '../services/api';
 import makeRequest from '../services/makeRequest';
 import userSelectors from '../modules/Auth/selectors';
@@ -11,7 +12,8 @@ import authHeader from '../services/authHeader';
 export default function* rootSaga() {
     yield all([
         takeEvery((action) => _.endsWith(action.type, '_REQUEST'), watchRequest),
-        authSaga()
+        authSaga(),
+        filmsSaga()
     ]);
 }
 

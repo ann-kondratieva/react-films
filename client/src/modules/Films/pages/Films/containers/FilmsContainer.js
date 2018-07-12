@@ -5,56 +5,35 @@ import { bindActionCreators } from 'redux';
 import { getFormValues } from 'redux-form';
 
 import filmsActionCreators from '../actions';
-import filmSelectors from '../../../selectors/films';
+import filmSelectors from '../selectors/index';
 import FilmsList from '../views/FilmsList';
-import userSelectors from '../../../../Auth/selectors/index.js';
-import globalActionCreators from '../../../../../actions';
-import FilmsAppBar from '../views/AppBar';
-import ServicesContainer from './ServicesContainer';
-import ScrollUpButton from '../../../../../views/ScrollUpButton';
-import { SEARCH_FORM } from '../constants';
-import { SELECT_FORM } from '../constants';
+import { SERVICES_FORM } from '../constants';
 
 class FilmsContainer extends Component {
 
     constructor(props) {
         super(props);
-        this.onLogoutClick = this.onLogoutClick.bind(this);
         this.loadMore = this.loadMore.bind(this);
+        this.onFilmClick = this.onFilmClick.bind(this);
     }
 
-    onLogoutClick() {
-        const { actions: { logout } } = this.props;
-        logout();
+    onFilmClick(_id) {
+        const { actions: { redirectToFilm } } = this.props;
+        redirectToFilm(_id);
     }
 
     loadMore() {
-        const { filmsState: { loading, items }, selectValues, searchValues } = this.props;
+        const { filmsState: { loading } } = this.props;
         if (!loading) {
-            const { filmActions } = this.props;
-            const { getFilmsRequest } = filmActions;
-            getFilmsRequest({
-                start: items.length,
-                end: items.length + 5,
-                orderBy: selectValues ? selectValues.select : undefined,
-                search: searchValues ? searchValues.search : undefined
-            });
+            const { actions: { loadMoreFilms } } = this.props;
+            loadMoreFilms();
         }
     }
 
     render() {
-        const { filmsState: { items, hasMore }, user: { username } } = this.props;
-        const appBarProps = {
-            username,
-            onLogoutClick: this.onLogoutClick
-        };
+        const { filmsState: { items, hasMore } } = this.props;
         return (
-            <React.Fragment >
-                <FilmsAppBar {...appBarProps} />
-                <ServicesContainer />
-                <FilmsList items={items} loadMore={this.loadMore} hasMore={hasMore} />
-                <ScrollUpButton />
-            </ React.Fragment >
+            <FilmsList items={items} onClick={this.onFilmClick} loadMore={this.loadMore} hasMore={hasMore} />
         );
     }
 };
@@ -62,29 +41,20 @@ class FilmsContainer extends Component {
 function mapStateToProps(state) {
     return {
         filmsState: filmSelectors.getFilmsState(state),
-        user: userSelectors.getUser(state),
-        token: userSelectors.getToken(state),
-        selectValues: getFormValues(SELECT_FORM)(state),
-        searchValues: getFormValues(SEARCH_FORM)(state)
+        formValues: getFormValues(SERVICES_FORM)(state)
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        filmActions: bindActionCreators(filmsActionCreators, dispatch),
-        actions: bindActionCreators(globalActionCreators, dispatch),
+        actions: bindActionCreators(filmsActionCreators, dispatch),
     };
 }
 
 FilmsContainer.propTypes = {
-    filmActions: PropTypes.object.isRequired,
     actions: PropTypes.object.isRequired,
-    token: PropTypes.string.isRequired,
     filmsState: PropTypes.object.isRequired,
-    user: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired,
-    selectValues: PropTypes.object,
-    searchValues: PropTypes.object
+    formValues: PropTypes.object
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(FilmsContainer);

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import selectors from '../../../../../selectors';
-import globalActionCreators from '../../../../../actions';
+import authActionCreators from '../../../actions';
 
 class PrivateRouteContainer extends Component {
 
@@ -27,7 +27,6 @@ class PrivateRouteContainer extends Component {
             )} />
         );
     }
-
 };
 
 PrivateRouteContainer.propTypes = {
@@ -45,7 +44,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(globalActionCreators, dispatch)
+        actions: bindActionCreators(authActionCreators, dispatch)
     };
 }
 

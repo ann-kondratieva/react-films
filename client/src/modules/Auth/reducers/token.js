@@ -2,7 +2,7 @@ import { handleActions } from 'redux-actions';
 
 import loginActionCreators from '../pages/Login/actions';
 import registerActionCreators from '../pages/Register/actions';
-import globalActionCreators from '../../../actions';
+import authActionCreators from '../actions';
 
 let initialState = null;
 
@@ -14,7 +14,7 @@ const token = handleActions(
         [registerActionCreators.registerSuccess]: (state, action) => {
             return action.response.token;
         },
-        [globalActionCreators.logout]: () => {
+        [authActionCreators.logout]: () => {
             return initialState;
         }
     },

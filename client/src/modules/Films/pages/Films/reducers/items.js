@@ -7,14 +7,11 @@ let initialState = [];
 const items = handleActions(
     {
         [filmsActionCreators.getFilmsSuccess]: (state, action) => {
-            if (state !== []) {
-                let resultState = state;
-                resultState.push(...action.response.films);
-                return resultState;
-            } else return action.response.films;
+            let resultState = state;
+            resultState.push(...action.response.films);
+            return resultState;
         },
         [filmsActionCreators.clearFilms]: () => {
-            console.log('clear');
             return [];
         }
     },

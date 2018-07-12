@@ -5,7 +5,10 @@ const filmsActionCreators = {
     getFilmsSuccess: createAction('GET_FILMS_SUCCESS'),
     getFilmsError: createAction('GET_FILMS_ERROR'),
     clearFilms: createAction('CLEAR_FILMS'),
-    setHasMore: createAction('SET_HAS_MORE')
+    setHasMore: createAction('SET_HAS_MORE'),
+    redirectToFilm: createAction('REDIRECT_TO_FILM'),
+    loadMoreFilms: createAction('LOAD_MORE_FILMS'),
+    applyFormChange: createAction('APPLY_FORM_CHANGE')
 };
 
 export default filmsActionCreators;

@@ -1,21 +1,21 @@
 import { handleActions } from 'redux-actions';
 
-import globalActionCreators from '../../../../actions';
+import authActionCreators from '../../actions';
 
 let initialState = '';
 
 const username = handleActions(
     {
-        [globalActionCreators.getUserRequest]: () => {
+        [authActionCreators.getUserRequest]: () => {
             return initialState;
         },
-        [globalActionCreators.getUserSuccess]: (state, action) => {
+        [authActionCreators.getUserSuccess]: (state, action) => {
             return action.response.username;
         },
-        [globalActionCreators.getUserError]: (error) => {
+        [authActionCreators.getUserError]: (error) => {
             return error;
         },
-        [globalActionCreators.logout]: () => {
+        [authActionCreators.logout]: () => {
             return initialState;
         }
     },
