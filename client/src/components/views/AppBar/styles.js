@@ -11,6 +11,10 @@ const styles = {
     },
     accountIcon: {
         marginRight: 6
+    },
+    home: {
+        color: 'white',
+        textDecoration: 'none'
     }
 };
 

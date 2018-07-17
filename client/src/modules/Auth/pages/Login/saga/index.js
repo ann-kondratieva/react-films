@@ -3,14 +3,15 @@ import { push } from 'react-router-redux';
 import { stopSubmit, startSubmit } from 'redux-form';
 
 import loginActionCreators from '../actions';
+import { LOGIN_FORM } from '../constants';
 
 function* redirectToMain() {
-    yield put(stopSubmit('LOGIN_FORM', null));
-    yield put(push('/'));
+    yield put(stopSubmit(LOGIN_FORM, null));
+    yield put(push('/films'));
 }
 
 function* startSubmitting() {
-    yield put(startSubmit('LOGIN_FORM'));
+    yield put(startSubmit(LOGIN_FORM));
 }
 
 function* loginSaga() {

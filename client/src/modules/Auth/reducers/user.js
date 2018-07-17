@@ -1,16 +1,16 @@
 import { handleActions } from 'redux-actions';
 
-import authActionCreators from '../../actions';
+import authActionCreators from '../actions';
 
-let initialState = '';
+let initialState = {};
 
-const username = handleActions(
+const user = handleActions(
     {
         [authActionCreators.getUserRequest]: () => {
             return initialState;
         },
         [authActionCreators.getUserSuccess]: (state, action) => {
-            return action.response.username;
+            return action.response;
         },
         [authActionCreators.getUserError]: (error) => {
             return error;
@@ -22,4 +22,4 @@ const username = handleActions(
     initialState
 );
 
-export default username;
+export default user;

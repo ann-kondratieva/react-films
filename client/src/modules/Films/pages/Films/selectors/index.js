@@ -1,5 +1,5 @@
-const getFilms = state => state.films.items;
-const getFilmsState = state => state.films;
+const getFilms = state => state.films.filmList.items;
+const getFilmsState = state => state.films.filmList;
 
 const filmSelectors = {
     getFilms,

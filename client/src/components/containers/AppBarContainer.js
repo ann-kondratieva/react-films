@@ -22,7 +22,7 @@ class AppBarContainer extends Component {
     render() {
         const { user: { username } } = this.props;
         const appBarProps = {
-            username,
+            username: username ? username : '',
             onLogoutClick: this.onLogoutClick
         };
         return (

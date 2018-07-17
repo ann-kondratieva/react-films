@@ -5,11 +5,11 @@ import items from './items';
 import loading from './loading';
 import hasMore from './hasMore';
 
-const films = combineReducers({
+const filmList = combineReducers({
     error,
     items,
     loading,
     hasMore
 });
 
-export default films;
+export default filmList;

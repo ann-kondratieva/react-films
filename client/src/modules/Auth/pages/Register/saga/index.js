@@ -3,14 +3,15 @@ import { push } from 'react-router-redux';
 import { stopSubmit, startSubmit } from 'redux-form';
 
 import registerActionCreators from '../actions';
+import { REGISTER_FORM } from '../constants';
 
 function* redirectToMain() {
-    yield put(stopSubmit('REGISTER_FORM', null));
-    yield put(push('/'));
+    yield put(stopSubmit(REGISTER_FORM, null));
+    yield put(push('/films'));
 }
 
 function* startSubmitting() {
-    yield put(startSubmit('REGISTER_FORM'));
+    yield put(startSubmit(REGISTER_FORM));
 }
 
 function* registerSaga() {

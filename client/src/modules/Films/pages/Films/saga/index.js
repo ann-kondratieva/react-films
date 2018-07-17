@@ -7,7 +7,7 @@ import { FILMS_LIMIT, SERVICES_FORM } from '../constants';
 import filmSelectors from '../selectors';
 
 function* redirect(action) {
-    yield put(push('/' + action.payload));
+    yield put(push('/films/' + action.payload));
 }
 
 function* loadFilms() {

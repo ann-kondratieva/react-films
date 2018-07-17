@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ImageLoader from 'react-load-image';
 
 import { withStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import styles from './styles';
-import placeholder from './output.svg';
-import ImageLoader from 'react-load-image';
-import Preloader from '../Preloader';
+import placeholder from '../../../../../../output.svg';
+import Preloader from '../../../../../../views/Preloader';
 
 const FilmsListItems = ({ items, classes, onClick }) => {
     return (
@@ -19,7 +19,7 @@ const FilmsListItems = ({ items, classes, onClick }) => {
                         <ImageLoader
                             src={image}
                             className={classes.image} >
-                            <img className={classes.image} />
+                            <img className={classes.image} alt={title} />
                             <div>Error!</div>
                             <Preloader image={placeholder} />
                         </ImageLoader>
@@ -38,8 +38,3 @@ FilmsListItems.propTypes = {
 };
 
 export default withStyles(styles)(FilmsListItems);
-
-{/* <img src={placeholder} alt={title} className={classes.image}
-                            onError={() => { console.log('error'); }} />
-                              <ListItemIcon>
- */}
