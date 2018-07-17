@@ -3,8 +3,8 @@ const styles = () => ({
         marginTop: 20
     },
     image: {
-        width: 400,
-        height: 'auto',
+        width: 'auto',
+        height: 250,
         cursor: 'pointer'
     }
 });

@@ -42,9 +42,9 @@ const Gallery = ({ film, classes, onImageClick, onImageClose, gallery: { image, 
                                 src={image.original}
                                 className={classes.image}
                             >
-                                <img className={classes.image} onClick={onImageClick} alt={film.title} />
-                                <div>Error!</div>
-                                <Preloader image={placeholder} />
+                                <img onClick={onImageClick} alt={film.title} />
+                                <Preloader className={classes.image} image={placeholder} />
+                                <Preloader className={classes.image} image={placeholder} />
                             </ImageLoader>
                         </div>
                     ) : ''}
