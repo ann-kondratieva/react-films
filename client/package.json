@@ -27,7 +27,7 @@
     "reselect": "^3.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "npm intall && npm run build",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

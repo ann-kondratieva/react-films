@@ -33,15 +33,15 @@ const Gallery = ({ images, classes, onImageClick, onImageClose, gallery: { image
             alignItems="center"
             justify="center"
             className={classes.container}>
-            <Grid item xs={12} >
-                <Slider {...settings}>
+            <Grid item xs={12}  >
+                <Slider {...settings} >
                     {images ? images.map((image, index) =>
                         <div key={index}>
                             <ImageLoader
                                 src={image.original}
-                                className={classes.image}
+                                className={classes.imageContainer}
                             >
-                                <img onClick={onImageClick} alt={image.original} />
+                                <img className={classes.image} onClick={onImageClick} alt={image.original} />
                                 <Preloader className={classes.image} image={placeholder} />
                                 <Preloader className={classes.image} image={placeholder} />
                             </ImageLoader>
