@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import userSelectors from '../../modules/Auth/selectors';
-import authActionCreators from '../../modules/Auth/actions';
+import userSelectors from '../../../modules/Auth/selectors';
+import authActionCreators from '../../../modules/Auth/actions';
 import AppBar from '../views/AppBar';
 
 class AppBarContainer extends Component {

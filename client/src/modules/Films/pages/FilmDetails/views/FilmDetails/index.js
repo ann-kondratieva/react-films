@@ -1,12 +1,12 @@
 import React from 'react';
 
-import AppBarContainer from '../../../../../../components/containers/AppBarContainer';
+import AppBar from '../../../../../../components/AppBar';
 import FilmDetailsContainer from '../../containers/FilmDetailsContainer';
 
 const Film = () => {
     return (
         <React.Fragment >
-            <AppBarContainer />
+            <AppBar />
             <FilmDetailsContainer />
         </ React.Fragment >
     );

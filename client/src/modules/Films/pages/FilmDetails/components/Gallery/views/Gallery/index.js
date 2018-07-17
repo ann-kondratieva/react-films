@@ -10,10 +10,10 @@ import Grid from '@material-ui/core/Grid';
 import Slider from 'react-slick';
 import GalleryArrow from '../GalleryArrow';
 import ImageDialog from '../ImageDialog';
-import placeholder from '../../../../../../output.svg';
-import Preloader from '../../../../../../views/Preloader';
+import placeholder from '../../../../../../../../output.svg';
+import Preloader from '../../../../../../../../views/Preloader';
 
-const Gallery = ({ film, classes, onImageClick, onImageClose, gallery: { image, isOpen } }) => {
+const Gallery = ({ images, classes, onImageClick, onImageClose, gallery: { image, isOpen } }) => {
     let settings = {
         prevArrow: <GalleryArrow />,
         nextArrow: <GalleryArrow />,
@@ -25,8 +25,7 @@ const Gallery = ({ film, classes, onImageClick, onImageClose, gallery: { image, 
     const dialogProps = {
         onClose: onImageClose,
         open: isOpen,
-        image,
-        title: film.title
+        image
     };
     return (
         <Grid
@@ -36,13 +35,13 @@ const Gallery = ({ film, classes, onImageClick, onImageClose, gallery: { image, 
             className={classes.container}>
             <Grid item xs={12} >
                 <Slider {...settings}>
-                    {film.images ? film.images.map((image, index) =>
+                    {images ? images.map((image, index) =>
                         <div key={index}>
                             <ImageLoader
                                 src={image.original}
                                 className={classes.image}
                             >
-                                <img onClick={onImageClick} alt={film.title} />
+                                <img onClick={onImageClick} alt={image.original} />
                                 <Preloader className={classes.image} image={placeholder} />
                                 <Preloader className={classes.image} image={placeholder} />
                             </ImageLoader>
@@ -58,7 +57,7 @@ const Gallery = ({ film, classes, onImageClick, onImageClose, gallery: { image, 
 
 Gallery.propTypes = {
     classes: PropTypes.object.isRequired,
-    film: PropTypes.object.isRequired,
+    images: PropTypes.array,
     onImageClick: PropTypes.func.isRequired,
     onImageClose: PropTypes.func.isRequired,
     gallery: PropTypes.object.isRequired,

@@ -9,7 +9,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 
-import { formatDate } from '../../services';
+import { formatDate } from '../../../../services';
 
 const CommentRow = ({ comment }) => {
     return (

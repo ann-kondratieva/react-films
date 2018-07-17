@@ -8,8 +8,8 @@ import Grid from '@material-ui/core/Grid';
 import Loading from '../../../../../../views/Loading';
 import Info from '../Info';
 import Rating from '../Rating';
-import GalleryContainer from '../../containers/GalleryContainer';
-import CommentContainer from '../../containers/CommentContainer';
+import Gallery from '../../components/Gallery';
+import Comments from '../../components/Comments';
 
 const Film = ({ film, classes, loading, onStarClick, loadingRating }) => {
     return (
@@ -23,8 +23,8 @@ const Film = ({ film, classes, loading, onStarClick, loadingRating }) => {
                     <React.Fragment>
                         <Info film={film} />
                         <Rating film={film} onStarClick={onStarClick} loadingRating={loadingRating} />
-                        <GalleryContainer film={film} />
-                        <CommentContainer film={film} />
+                        <Gallery images={film.images} />
+                        <Comments film={film} />
                     </React.Fragment>
                 </Grid>}
         </Grid>

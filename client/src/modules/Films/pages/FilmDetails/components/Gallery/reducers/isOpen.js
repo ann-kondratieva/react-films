@@ -1,15 +1,15 @@
 import { handleActions } from 'redux-actions';
 
-import filmActionCreators from '../../actions';
+import galleryActionCreators from '../actions';
 
 let initialState = false;
 
 const isOpen = handleActions(
     {
-        [filmActionCreators.openImage]: () => {
+        [galleryActionCreators.openImage]: () => {
             return true;
         },
-        [filmActionCreators.closeImage]: () => {
+        [galleryActionCreators.closeImage]: () => {
             return false;
         }
     },

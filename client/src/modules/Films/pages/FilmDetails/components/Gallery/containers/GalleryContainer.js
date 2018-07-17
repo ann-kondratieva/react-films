@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router-dom';
 
-import filmActionCreators from '../actions';
 import Gallery from '../views/Gallery';
-import filmSelectors from '../selectors';
+import filmSelectors from '../../../selectors';
+import galleryActionCreators from '../actions';
 
 class GalleryContainer extends Component {
 
@@ -27,9 +27,9 @@ class GalleryContainer extends Component {
     }
 
     render() {
-        const { gallery, film } = this.props;
+        const { gallery, images } = this.props;
         const props = {
-            film,
+            images,
             gallery,
             onImageClick: this.onImageClick,
             onImageClose: this.onImageClose
@@ -48,14 +48,14 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(filmActionCreators, dispatch),
+        actions: bindActionCreators(galleryActionCreators, dispatch),
     };
 }
 
 GalleryContainer.propTypes = {
     actions: PropTypes.object.isRequired,
     gallery: PropTypes.object.isRequired,
-    film: PropTypes.object.isRequired
+    images: PropTypes.array
 
 };
 

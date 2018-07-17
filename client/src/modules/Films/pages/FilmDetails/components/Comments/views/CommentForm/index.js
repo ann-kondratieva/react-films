@@ -7,8 +7,8 @@ import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './styles';
 
-import Loading from '../../../../../../views/Loading';
-import RenderTinymceField from '../../../../../../views/RenderTinymceField';
+import Loading from '../../../../../../../../views/Loading';
+import RenderTinymceField from '../../../../../../../../views/RenderTinymceField';
 
 const CommentForm = (props) => {
     const { handleSubmit, pristine, submitting, classes } = props;

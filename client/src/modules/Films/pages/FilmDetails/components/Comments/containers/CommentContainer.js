@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router-dom';
 
-import filmActionCreators from '../actions';
-import { COMMENT_FORM } from '../constants';
+import filmActionCreators from '../../../actions';
+import { COMMENT_FORM } from '../../../constants';
 import CommentBox from '../views/CommentBox';
-import userSelectors from '../../../../Auth/selectors';
+import userSelectors from '../../../../../../Auth/selectors';
 
 class CommentContainer extends Component {
 

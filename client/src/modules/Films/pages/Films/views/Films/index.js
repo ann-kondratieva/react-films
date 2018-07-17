@@ -1,14 +1,14 @@
 import React from 'react';
 
 import FilmsContainer from '../../containers/FilmsContainer';
-import AppBarContainer from '../../../../../../components/containers/AppBarContainer';
+import AppBar from '../../../../../../components/AppBar';
 import ServicesContainer from '../../containers/ServicesContainer';
 import ScrollUpButton from '../../../../../../views/ScrollUpButton';
 
 const Films = () => {
     return (
         <React.Fragment >
-            <AppBarContainer />
+            <AppBar />
             <ServicesContainer />
             <FilmsContainer />
             <ScrollUpButton />

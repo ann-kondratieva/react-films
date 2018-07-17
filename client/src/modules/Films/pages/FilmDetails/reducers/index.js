@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
 import film from './film';
-import gallery from './gallery';
+import gallery from '../components/Gallery/reducers';
 
 const filmDetails = combineReducers({
     film,
