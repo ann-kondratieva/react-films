@@ -16,7 +16,6 @@ class FilmDetailsContainer extends Component {
         this.onStarClick = this.onStarClick.bind(this);
     }
 
-
     onStarClick(value) {
         let { film, actions: { updateFilmRatingRequest }, user } = this.props;
         updateFilmRatingRequest({ userId: user._id, filmId: film._id, rating: value });
@@ -25,7 +24,7 @@ class FilmDetailsContainer extends Component {
     render() {
         const { film, ratingState: { isLoadingRating } } = this.props;
         const props = {
-            film,
+            rating: film.rating,
             isLoadingRating,
             onStarClick: this.onStarClick
         };

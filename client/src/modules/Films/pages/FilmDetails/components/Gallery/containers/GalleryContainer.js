@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router-dom';
 
 import Gallery from '../views/Gallery';
-import filmSelectors from '../../../selectors';
+import selectors from '../selectors';
 import galleryActionCreators from '../actions';
 
 class GalleryContainer extends Component {
@@ -42,7 +42,7 @@ class GalleryContainer extends Component {
 
 function mapStateToProps(state) {
     return {
-        gallery: filmSelectors.getGalleryState(state)
+        gallery: selectors.getGalleryState(state)
     };
 }
 

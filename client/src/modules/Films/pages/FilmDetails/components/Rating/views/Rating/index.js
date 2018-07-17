@@ -7,7 +7,7 @@ import styles from './styles';
 import Grid from '@material-ui/core/Grid';
 import Loading from '../../../../../../../../views/Loading';
 
-const Rating = ({ film, classes, onStarClick, isLoadingRating }) => {
+const Rating = ({ rating, classes, onStarClick, isLoadingRating }) => {
     return (
         <Grid
             className={classes.container}
@@ -18,7 +18,7 @@ const Rating = ({ film, classes, onStarClick, isLoadingRating }) => {
                 className={classes.stars}
                 name="rate"
                 starCount={5}
-                value={film ? film.rating : 0}
+                value={rating ? rating : 0}
                 onStarClick={onStarClick}
             />}
         </Grid>
@@ -27,7 +27,7 @@ const Rating = ({ film, classes, onStarClick, isLoadingRating }) => {
 
 Rating.propTypes = {
     classes: PropTypes.object.isRequired,
-    film: PropTypes.object,
+    rating: PropTypes.object,
     onStarClick: PropTypes.func.isRequired,
     isLoadingRating: PropTypes.bool.isRequired
 };
