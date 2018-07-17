@@ -7,13 +7,11 @@ import { withRouter } from 'react-router-dom';
 import filmActionCreators from '../actions';
 import filmSelectors from '../selectors';
 import Film from '../views/Film';
-import userSelectors from '../../../../Auth/selectors';
 
 class FilmDetailsContainer extends Component {
 
     constructor(props) {
         super(props);
-        this.onStarClick = this.onStarClick.bind(this);
     }
 
     componentDidMount() {
@@ -22,18 +20,11 @@ class FilmDetailsContainer extends Component {
         getFilmRequest({ id });
     }
 
-    onStarClick(value) {
-        let { filmState: { item }, actions: { updateFilmRatingRequest }, user } = this.props;
-        updateFilmRatingRequest({ userId: user._id, filmId: item._id, rating: value });
-    }
-
     render() {
-        const { filmState: { item, loading, loadingRating } } = this.props;
+        const { filmState: { item, loading } } = this.props;
         const props = {
             film: item,
-            loading,
-            loadingRating,
-            onStarClick: this.onStarClick
+            loading
         };
         return (
             <React.Fragment >
@@ -45,8 +36,7 @@ class FilmDetailsContainer extends Component {
 
 function mapStateToProps(state) {
     return {
-        filmState: filmSelectors.getFilmState(state),
-        user: userSelectors.getUser(state)
+        filmState: filmSelectors.getFilmState(state)
     };
 }
 
@@ -60,8 +50,7 @@ FilmDetailsContainer.propTypes = {
     actions: PropTypes.object.isRequired,
     filmState: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
-    match: PropTypes.object.isRequired,
-    user: PropTypes.object.isRequired
+    match: PropTypes.object.isRequired
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(FilmDetailsContainer));

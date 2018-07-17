@@ -7,11 +7,11 @@ import Grid from '@material-ui/core/Grid';
 
 import Loading from '../../../../../../views/Loading';
 import Info from '../Info';
-import Rating from '../Rating';
+import Rating from '../../components/Rating';
 import Gallery from '../../components/Gallery';
 import Comments from '../../components/Comments';
 
-const Film = ({ film, classes, loading, onStarClick, loadingRating }) => {
+const Film = ({ film, classes, loading }) => {
     return (
         <Grid
             className={classes.container}
@@ -22,7 +22,7 @@ const Film = ({ film, classes, loading, onStarClick, loadingRating }) => {
                 <Grid item xs={7} >
                     <React.Fragment>
                         <Info film={film} />
-                        <Rating film={film} onStarClick={onStarClick} loadingRating={loadingRating} />
+                        <Rating film={film} />
                         <Gallery images={film.images} />
                         <Comments film={film} />
                     </React.Fragment>
@@ -34,9 +34,7 @@ const Film = ({ film, classes, loading, onStarClick, loadingRating }) => {
 Film.propTypes = {
     classes: PropTypes.object.isRequired,
     film: PropTypes.object.isRequired,
-    loading: PropTypes.bool.isRequired,
-    onStarClick: PropTypes.func.isRequired,
-    loadingRating: PropTypes.bool.isRequired
+    loading: PropTypes.bool.isRequired
 };
 
 export default withStyles(styles)(Film);
