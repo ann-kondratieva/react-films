@@ -35,9 +35,7 @@ class CommentContainer extends Component {
             form: COMMENT_FORM
         };
         return (
-            <React.Fragment >
-                <CommentBox film={film} formProps={formProps} />
-            </ React.Fragment >
+            <CommentBox film={film} formProps={formProps} />
         );
     }
 };

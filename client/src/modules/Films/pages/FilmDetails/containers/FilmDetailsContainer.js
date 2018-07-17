@@ -27,9 +27,7 @@ class FilmDetailsContainer extends Component {
             loading
         };
         return (
-            <React.Fragment >
-                <Film {...props} />
-            </ React.Fragment >
+            <Film {...props} />
         );
     }
 };

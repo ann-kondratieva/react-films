@@ -1,6 +1,7 @@
 import { handleActions } from 'redux-actions';
 
 import filmActionCreators from '../../actions';
+import ratingActionCreators from '../../components/Rating/actions';
 
 let initialState = {};
 
@@ -9,7 +10,7 @@ const item = handleActions(
         [filmActionCreators.getFilmSuccess]: (state, action) => {
             return action.response.film;
         },
-        [filmActionCreators.updateFilmRatingSuccess]: (state, action) => {
+        [ratingActionCreators.updateFilmRatingSuccess]: (state, action) => {
             return action.response.film;
         },
         [filmActionCreators.updateFilmSuccess]: (state, action) => {

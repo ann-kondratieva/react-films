@@ -29,9 +29,7 @@ class FilmDetailsContainer extends Component {
             onStarClick: this.onStarClick
         };
         return (
-            <React.Fragment >
-                <Rating {...props} />
-            </ React.Fragment >
+            <Rating {...props} />
         );
     }
 };

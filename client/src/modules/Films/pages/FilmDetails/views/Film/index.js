@@ -20,12 +20,10 @@ const Film = ({ film, classes, loading }) => {
             justify="center">
             {loading ? <Loading /> :
                 <Grid item xs={7} >
-                    <React.Fragment>
-                        <Info film={film} />
-                        <Rating film={film} />
-                        <Gallery images={film.images} />
-                        <Comments film={film} />
-                    </React.Fragment>
+                    <Info film={film} />
+                    <Rating film={film} />
+                    <Gallery images={film.images} />
+                    <Comments film={film} />
                 </Grid>}
         </Grid>
     );

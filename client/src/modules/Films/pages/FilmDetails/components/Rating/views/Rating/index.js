@@ -27,7 +27,7 @@ const Rating = ({ rating, classes, onStarClick, isLoadingRating }) => {
 
 Rating.propTypes = {
     classes: PropTypes.object.isRequired,
-    rating: PropTypes.object,
+    rating: PropTypes.number,
     onStarClick: PropTypes.func.isRequired,
     isLoadingRating: PropTypes.bool.isRequired
 };
