@@ -10,6 +10,7 @@ import LoginContainer from '../../modules/Auth/pages/Login/containers/LoginConta
 import RegisterContainer from '../../modules/Auth/pages/Register/containers/RegisterContainer';
 import history from '../../services/history';
 import Film from '../../modules/Films/pages/FilmDetails';
+import ErrorPage from '../Error';
 
 const NavigateRouter = () => {
     return (
@@ -20,6 +21,7 @@ const NavigateRouter = () => {
                 <Route exact path={`${process.env.PUBLIC_URL}/login`} component={LoginContainer} />
                 <Route exact path={`${process.env.PUBLIC_URL}/register`} component={RegisterContainer} />
                 <PrivateRoute exact path={`${process.env.PUBLIC_URL}/films/:id`} component={Film} />
+                <Route exact path='*' component={ErrorPage} />
             </Switch>
         </ConnectedRouter>
     );
