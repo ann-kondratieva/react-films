@@ -4,7 +4,7 @@ const styles = () => ({
         height: 'auto',
         position: 'absolute',
         zIndex: '10',
-        top: '30px',
+        top: '40px',
         left: '30px'
     },
     title: {

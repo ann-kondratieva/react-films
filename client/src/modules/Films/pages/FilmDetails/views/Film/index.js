@@ -6,9 +6,10 @@ import styles from './styles';
 import Grid from '@material-ui/core/Grid';
 
 import Loading from '../../../../../../views/Loading';
-import Info from '../Info';
+import Info from '../../components/Info';
 import Gallery from '../../components/Gallery';
 import Comments from '../../components/Comments';
+
 
 const Film = ({ film, classes, loading }) => {
     return (

@@ -1,22 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ImageLoader from 'react-load-image';
+import Blur from 'react-blur';
 
 import { withStyles } from '@material-ui/core/styles';
 import styles from './styles';
 import Grid from '@material-ui/core/Grid';
 import { Typography } from '@material-ui/core';
 
-import placeholder from '../../../../../../output.svg';
-import Preloader from '../../../../../../views/Preloader';
-import Rating from '../../components/Rating';
-import Blur from 'react-blur';
+import placeholder from '../../../../../../../../output.svg';
+import Preloader from '../../../../../../../../views/Preloader';
+import Rating from '../../../../components/Rating';
 
-const Info = ({ film, classes }) => {
-    let backgroundImage = film.images ? film.images[2].original : '';
+const Info = ({ film, classes, backgroundImage }) => {
     return (
         <React.Fragment>
-            <Blur img={backgroundImage} blurRadius={6} enableStyles>
+            <Blur img={backgroundImage} blurRadius={6} enableStyles >
                 <Grid
                     container
                     alignItems="center"
@@ -57,7 +56,8 @@ const Info = ({ film, classes }) => {
 
 Info.propTypes = {
     classes: PropTypes.object.isRequired,
-    film: PropTypes.object.isRequired
+    film: PropTypes.object.isRequired,
+    backgroundImage: PropTypes.string.isRequired
 };
 
 export default withStyles(styles)(Info);
