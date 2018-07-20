@@ -18,8 +18,12 @@ const RenderTinymceField = ({
             placeholder={label}
             onChange={e => input.onChange(e)}
             tinymceConfig={{
-                plugins: 'autolink link image lists print preview',
-                toolbar: 'undo redo | bold italic | alignleft aligncenter alignright'
+                theme: 'modern',
+                plugins: 'print preview  searchreplace autolink directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists textcolor wordcount  imagetools contextmenu colorpicker textpattern help',
+                toolbar: 'undo redo | bold italic | alignleft aligncenter alignright',
+                forced_root_block: '',
+                force_br_newlines: true,
+                force_p_newlines: false,
             }}
         />
     );

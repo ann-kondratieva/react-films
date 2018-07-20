@@ -26,5 +26,3 @@ RenderTextField.propTypes = {
 };
 
 export default RenderTextField;
-
-

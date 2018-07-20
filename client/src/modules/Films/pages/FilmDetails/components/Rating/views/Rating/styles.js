@@ -1,11 +1,11 @@
 const styles = () => ({
     stars: {
         fontSize: '2em',
-        letterSpacing: 15,
-        paddingTop: 10
+        letterSpacing: 15
     },
     container: {
-        width: 400
+        width: 210,
+        height: 60
     }
 });
 

@@ -1,6 +1,6 @@
 const styles = () => ({
     container: {
-        marginTop: 20
+        marginTop: 100
     },
     imageContainer: {
         height: 250

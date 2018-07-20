@@ -24,7 +24,6 @@ const CommentForm = (props) => {
                     label="Message"
                 />
             </Grid>
-
             <Grid item xs={12}  >
                 <Grid
                     className={classes.button}
@@ -44,7 +43,6 @@ const CommentForm = (props) => {
                         </Button>}
                 </Grid>
             </Grid>
-
         </form>
     );
 };

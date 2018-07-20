@@ -17,29 +17,32 @@ const FilmsList = ({ items, classes, loadMore, hasMore, onClick }) => {
             container
             alignItems="center"
             justify="center">
-            <InfiniteScroll className={classes.list}
-                pageStart={0}
-                loadMore={loadMore}
-                hasMore={hasMore}
-                loader={<Grid
-                    key="load"
-                    container
-                    alignItems="center"
-                    justify="center">
-                    <Loading />
-                </Grid>}
+            <Grid item xs={8}>
+                <InfiniteScroll className={classes.list}
+                    pageStart={0}
+                    loadMore={loadMore}
+                    hasMore={hasMore}
+                    loader={<Grid
+                        key="load"
+                        container
+                        alignItems="center"
+                        justify="center">
+                        <Loading />
+                    </Grid>}
 
-            >
-                <List className={classes.list} >
-                    <FilmsListItems items={items} onClick={onClick} />
-                </List>
-                {!hasMore && items.length === 0 && <Grid className={classes.container}
-                    container
-                    alignItems="center"
-                    justify="center">
-                    <Typography> {'Sorry, we can\'t find anything to show :('} </Typography>
-                </Grid>}
-            </InfiniteScroll>
+                >
+                    <List className={classes.list} >
+                        <FilmsListItems items={items} onClick={onClick} />
+                    </List>
+
+                    {!hasMore && items.length === 0 && <Grid className={classes.container}
+                        container
+                        alignItems="center"
+                        justify="center">
+                        <Typography> {'Sorry, we can\'t find anything to show :('} </Typography>
+                    </Grid>}
+                </InfiniteScroll>
+            </Grid>
         </ Grid >
     );
 };

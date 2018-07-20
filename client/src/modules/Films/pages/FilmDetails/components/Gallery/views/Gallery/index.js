@@ -13,19 +13,22 @@ import ImageDialog from '../ImageDialog';
 import placeholder from '../../../../../../../../output.svg';
 import Preloader from '../../../../../../../../views/Preloader';
 
-const Gallery = ({ images, classes, onImageClick, onImageClose, gallery: { image, isOpen } }) => {
+const Gallery = ({ images, classes, onImageClick, onImageClose, onNextClick, onPrevClick, gallery: { image, isOpen } }) => {
     let settings = {
         prevArrow: <GalleryArrow />,
         nextArrow: <GalleryArrow />,
         infinite: true,
         speed: 500,
         slidesToShow: 5,
-        slidesToScroll: 3
+        slidesToScroll: 3,
+        dots: true
     };
     const dialogProps = {
         onClose: onImageClose,
         open: isOpen,
-        image
+        image,
+        onNextClick,
+        onPrevClick
     };
     return (
         <Grid
@@ -61,6 +64,8 @@ Gallery.propTypes = {
     onImageClick: PropTypes.func.isRequired,
     onImageClose: PropTypes.func.isRequired,
     gallery: PropTypes.object.isRequired,
+    onNextClick: PropTypes.func.isRequired,
+    onPrevClick: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(Gallery);

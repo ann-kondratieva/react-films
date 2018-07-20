@@ -9,7 +9,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 
-import { formatDate } from '../../../../services';
+import Moment from 'react-moment';
 
 const CommentRow = ({ comment }) => {
     return (
@@ -25,7 +25,7 @@ const CommentRow = ({ comment }) => {
                                 {comment.userName}
                             </Typography>
                             <Typography variant="caption">
-                                {formatDate(comment.createdAt)}
+                                <Moment format="YYYY/MM/DD HH:mm">{comment.createdAt}</Moment>
                             </Typography>
                         </Grid>
                         <Grid item xs={9}>

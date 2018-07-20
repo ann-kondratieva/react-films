@@ -1,6 +1,6 @@
 const styles = () => ({
-    container: {
-        paddingTop: 20
+    loadingContainer: {
+        paddingTop: 60
     }
 });
 

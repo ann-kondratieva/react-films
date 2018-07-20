@@ -7,21 +7,22 @@ import Grid from '@material-ui/core/Grid';
 
 import Loading from '../../../../../../views/Loading';
 import Info from '../Info';
-import Rating from '../../components/Rating';
 import Gallery from '../../components/Gallery';
 import Comments from '../../components/Comments';
 
 const Film = ({ film, classes, loading }) => {
     return (
         <Grid
-            className={classes.container}
             container
             alignItems="center"
-            justify="center">
-            {loading ? <Loading /> :
+            justify="center"
+            className={classes.mainContainer}>
+            {loading ? <Grid container
+                alignItems="center"
+                justify="center"
+                className={classes.loadingContainer} > <Loading /> </Grid> :
                 <Grid item xs={7} >
                     <Info film={film} />
-                    <Rating film={film} />
                     <Gallery images={film.images} />
                     <Comments film={film} />
                 </Grid>}

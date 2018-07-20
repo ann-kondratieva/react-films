@@ -14,7 +14,7 @@ const FilmsListItems = ({ items, classes, onClick }) => {
     return (
         <React.Fragment>
             {items.map(({ title, description, image, _id }) => {
-                return (<ListItem onClick={() => onClick(_id)} button={true} key={_id} id={_id}>
+                return (<a key={_id} onClick={() => onClick(_id)}><ListItem button={true} key={_id} id={_id}>
                     <ListItemIcon>
                         <ImageLoader
                             src={image}
@@ -25,7 +25,7 @@ const FilmsListItems = ({ items, classes, onClick }) => {
                         </ImageLoader>
                     </ListItemIcon>
                     <ListItemText primary={title} secondary={description} />
-                </ListItem>);
+                </ListItem></a>);
             })}
         </React.Fragment>
     );

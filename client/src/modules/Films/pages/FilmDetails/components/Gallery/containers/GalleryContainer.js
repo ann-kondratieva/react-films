@@ -14,6 +14,8 @@ class GalleryContainer extends Component {
         super(props);
         this.onImageClick = this.onImageClick.bind(this);
         this.onImageClose = this.onImageClose.bind(this);
+        this.onNextClick = this.onNextClick.bind(this);
+        this.onPrevClick = this.onPrevClick.bind(this);
     }
 
     onImageClick(event) {
@@ -26,13 +28,25 @@ class GalleryContainer extends Component {
         closeImage();
     }
 
+    onNextClick() {
+        const { changeImage } = this.props.actions;
+        changeImage({ isNext: true });
+    }
+
+    onPrevClick() {
+        const { changeImage } = this.props.actions;
+        changeImage({ isNext: false });
+    }
+
     render() {
         const { gallery, images } = this.props;
         const props = {
             images,
             gallery,
             onImageClick: this.onImageClick,
-            onImageClose: this.onImageClose
+            onImageClose: this.onImageClose,
+            onNextClick: this.onNextClick,
+            onPrevClick: this.onPrevClick
         };
         return (
             <Gallery {...props} />

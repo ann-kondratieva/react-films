@@ -10,7 +10,6 @@ import passport from 'passport';
 
 import { DB_URL } from './config/db';
 import films from './modules/Films/routes/films';
-import film from './modules/Films/routes/film';
 import auth from './modules/Auth/routes/auth';
 import { authLocalStrategy } from './modules/Auth/config/passport';
 import { authJwtStrategy } from './modules/Auth/config/passport';
@@ -39,7 +38,6 @@ router.get('/', (req, res) => {
 app.use('/api', router);
 router.use('/films', films);
 router.use('/auth', auth);
-router.use('/film', film);
 
 app.use(express.static(path.join(__dirname, '/../client/build')));
 app.get('*', (req, res) => {

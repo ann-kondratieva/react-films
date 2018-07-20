@@ -3,8 +3,6 @@ const styles = theme => ({
         margin: theme.spacing.unit * 2,
     },
     container: {
-        paddingLeft: 300,
-        paddingRight: 300
     },
     list: {
         width: '100%'
@@ -12,9 +10,6 @@ const styles = theme => ({
     image: {
         width: 400,
         height: 'auto'
-    },
-    loadContainer: {
-        paddingTop: 150
     }
 });
 

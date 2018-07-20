@@ -8,7 +8,7 @@ import { styles } from './styles';
 import MenuItem from '@material-ui/core/MenuItem';
 
 import RenderSelectField from '../../../../../../views/RenderSelectField';
-import RenderTextField from '../../../../../../views/RenderTextField';
+import RenderSearchField from '../../../../../../views/RenderSearchField';
 
 const ServicesForm = ({ classes, onSubmit }) => {
     return (
@@ -16,31 +16,41 @@ const ServicesForm = ({ classes, onSubmit }) => {
             <Grid className={classes.container}
                 container
                 alignItems="center"
-                justify="space-around">
-                <Field
-                    className={classes.textField}
-                    name="search"
-                    component={RenderTextField}
-                    label="Search"
-                    margin="dense"
-                    type="search"
-                    onChange={onSubmit}
-                />
-                <Field
-                    className={classes.selectField}
-                    onChange={onSubmit}
-                    name="select"
-                    component={RenderSelectField}
-                    label="Order By"
-                    margin="dense"
-                    type="select">
-                    <MenuItem value='none'>
-                        None
-                    </MenuItem>
-                    <MenuItem value='title'>Title</MenuItem>
-                    <MenuItem value='rating'>Rating</MenuItem>
-                </Field>
-
+                justify="center">
+                <Grid item xs={7}>
+                    <Grid className={classes.container}
+                        container
+                        alignItems="flex-end"
+                        justify="space-between">
+                        <Grid item xs={4}>
+                            <Field
+                                className={classes.textField}
+                                name="search"
+                                component={RenderSearchField}
+                                label="Search"
+                                margin="dense"
+                                type="search"
+                                onChange={onSubmit}
+                            />
+                        </Grid>
+                        <Grid item xs={4}>
+                            <Field
+                                className={classes.selectField}
+                                onChange={onSubmit}
+                                name="select"
+                                component={RenderSelectField}
+                                label="Order By"
+                                margin="dense"
+                                type="select">
+                                <MenuItem value='none'>
+                                    None
+                                </MenuItem>
+                                <MenuItem value='title'>Title</MenuItem>
+                                <MenuItem value='rating'>Rating</MenuItem>
+                            </Field>
+                        </Grid>
+                    </Grid>
+                </Grid>
             </Grid>
         </form>
 

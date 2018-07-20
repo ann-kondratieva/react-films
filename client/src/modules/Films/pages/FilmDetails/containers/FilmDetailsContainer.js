@@ -10,10 +10,6 @@ import Film from '../views/Film';
 
 class FilmDetailsContainer extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     componentDidMount() {
         const { actions: { getFilmRequest } } = this.props;
         const id = this.props.match.params.id;

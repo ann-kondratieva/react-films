@@ -9,15 +9,14 @@ export default {
     },
     getFilmRequest: (params) => {
         return {
-            url: '/api/film',
+            url: '/api/films/' + params.id,
             method: 'get',
-            headers: {},
-            params
+            headers: {}
         };
     },
     updateFilmRatingRequest: (payload) => {
         return {
-            url: '/api/film/rating',
+            url: '/api/films/' + payload.filmId + '/rating',
             method: 'put',
             headers: {},
             data: payload
@@ -25,7 +24,7 @@ export default {
     },
     updateFilmRequest: (payload) => {
         return {
-            url: '/api/film',
+            url: '/api/films/' + payload.film._id,
             method: 'put',
             headers: {},
             data: payload
